@@ -9,7 +9,7 @@ export default function Home() {
       <div className='border-t-4 border-[#4BC789] w-[210px]'></div>
       </div>
       <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Moneybag name={'hello bee!'}/>
+        <Moneybag name={'Groceries'}/>
       </main>
     </div>
   );
