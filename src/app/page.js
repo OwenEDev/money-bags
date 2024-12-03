@@ -8,8 +8,12 @@ export default function Home() {
       <h1 className='text-4xl font-medium'>Money Bags</h1>
       <div className='border-t-4 border-[#4BC789] w-[210px]'></div>
       </div>
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
+      <main className="flex flex-row gap-8 row-start-2 items-center sm:items-start">
         <Moneybag name={'Groceries'}/>
+        <Moneybag name={'Entertainment'}></Moneybag>
+        <div className="flex items-center justify-center content-center h-[250px] w-[200px]">
+          <button className="border-2 hover:bg-[#82D9AD] font-medium px-1 rounded">Add Money bag</button>
+        </div>
       </main>
     </div>
   );
