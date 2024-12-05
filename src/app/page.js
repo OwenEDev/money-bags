@@ -1,15 +1,16 @@
 "use client"
-import Image from "next/image";
 import Moneybag from "./components/moneyBag";
+import AddMoneyBag from "./components/addMoneyBag";
 import {useState} from "react";
 import { Fragment } from "react";
 
 export default function Home() {
   const [bags, setBags] = useState([])
-  const addMoneyBag = () => {
-    let index = bags.length;
-    setBags([...bags, {name: "bonk", amount: "", index: index}])
-  }
+  const [popupVisibility, setPopupVisibility] = useState('hidden')
+  // const addMoneyBag = () => {
+  //   let index = bags.length;
+  //   setBags([...bags, {name: "bonk", amount: "", index: index}])
+  // }
   const editMoneyBag = (index, name, amount) => {
     let bagCopy = [...bags];
     bagCopy.map((bag) => {
@@ -36,13 +37,14 @@ export default function Home() {
       <div className='border-t-4 border-[#4BC789] w-[210px]'></div>
       </div>
       <main className="flex flex-row gap-8 row-start-2 items-center sm:items-start">
+        <AddMoneyBag visibility={popupVisibility}/>
         {bags.map((item, index) => (
           <Fragment key={index}>
           <Moneybag name={item.name} index={item.index} edit={editMoneyBag} del={deleteMoneyBag}/>
           </Fragment>
         ))}
         <div className="flex items-center justify-center content-center h-[250px] w-[200px]">
-          <button onClick={() => {addMoneyBag()}} className="border-2 hover:bg-[#82D9AD] font-medium px-1 rounded">Add Money bag</button>
+          <button className="border-2 hover:bg-[#82D9AD] font-medium px-1 rounded" onClick={() => {setPopupVisibility('absolute')}}>Add Money bag</button>
         </div>
       </main>
     </div>
