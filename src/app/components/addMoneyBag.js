@@ -1,6 +1,6 @@
 const AddMoneyBag = ({visibility, hide}) => {
     return (
-        <div tabIndex="-1" aria-hidden="true" className={`${visibility} overflow-y-auto overflow-x-hidden fixed justify-center items-center w-[50%] md:inset-0 h-[calc(100%-1rem)] max-h-full my-[100px] mx-[25%]`}>
+        <div tabIndex="-1" aria-hidden="true" className={`${visibility} overflow-y-auto overflow-x-hidden fixed justify-center items-center w-[50%] md:inset-0 h-[calc(100%-1rem)] max-h-full my-[150px] mx-[25%]`}>
     <div className="relative p-4 w-full max-h-full">
         <div className="relative bg-white rounded-lg">
             <div className="flex items-center justify-between p-4 md:p-5 border-b rounded-t">
