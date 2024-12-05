@@ -47,7 +47,7 @@ export default function Home() {
           </Fragment>
         ))}
         <div className="flex items-center justify-center content-center h-[250px] w-[200px]">
-          <button className="border-2 hover:bg-[#82D9AD] font-medium px-1 rounded" onClick={() => {setPopupVisibility('absolute')}}>Add Money bag</button>
+          <button className="bg-slate-100 hover:bg-[#82D9AD] font-medium px-1 rounded" onClick={() => {setPopupVisibility('absolute')}}>Add Money bag</button>
         </div>
       </main>
     </div>
