@@ -1,8 +1,11 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import CustomButton from "./customButton";
 import CustomInput from "./customInput";
 
 const AddMoneyBag = ({visibility, hide, addMoneyBag}) => {
+    const [bagName, setBagName] = useState('');
+    const [bagAmount, setBagAmount] = useState('');
+
     return (
         <div tabIndex="-1" aria-hidden="true" className={`${visibility} overflow-y-auto overflow-x-hidden fixed justify-center items-center w-[50%] md:inset-0 h-[calc(100%-1rem)] max-h-full my-[150px] mx-[25%]`}>
     <div className="relative p-4 w-full max-h-full">
@@ -21,9 +24,9 @@ const AddMoneyBag = ({visibility, hide, addMoneyBag}) => {
                 </div>
       
                 <div className="flex flex-col items-center">
-                    <CustomInput placeholder={"Name your money bag"}/>
-                    <CustomInput placeholder={"Enter your budget"}/>
-                    <CustomButton buttonText={"Add Money Bag"} onClick={() => {addMoneyBag(); hide();}}/>
+                    <CustomInput placeholder={"Name your money bag"} onChange={setBagName} value={bagName}/>
+                    <CustomInput placeholder={"Enter your budget"} onChange={setBagAmount} value={bagAmount}/>
+                    <CustomButton buttonText={"Add Money Bag"} onClick={() => {addMoneyBag(bagName, bagAmount); hide();}}/>
                 </div>
 
             </div>

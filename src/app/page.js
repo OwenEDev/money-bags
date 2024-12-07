@@ -9,25 +9,23 @@ export default function Home() {
   const [bags, setBags] = useState([])
   const [popupVisibility, setPopupVisibility] = useState('hidden')
 
-  const addMoneyBag = () => {
+  const addMoneyBag = (name, amount) => {
     let index = bags.length;
-    setBags([...bags, {name: "bonk", amount: "", index: index}])
+    setBags([...bags, {name: name, amount: amount}])
   }
-  const editMoneyBag = (index, name, amount) => {
+  // const editMoneyBag = (index, name, amount) => {
+  //   let bagCopy = [...bags];
+  //   bagCopy.map((bag) => {
+  //     if (bag.index === index) {
+  //       console.log(`${bag.index} matched with ${index}`)
+  //     }
+  //   });
+  // }
+  const deleteMoneyBag = (name) => {
     let bagCopy = [...bags];
     bagCopy.map((bag) => {
-      if (bag.index === index) {
-        console.log(`${bag.index} matched with ${index}`)
-      }
-    });
-  }
-  const deleteMoneyBag = (index) => {
-    console.log(index);
-    let bagCopy = [...bags];
-    let newBagArr = [];
-    bagCopy.map((bag) => {
-      if (bag.index === index) {
-        bagCopy = bagCopy.filter((item) => item.index !== index)
+      if (bag.name === name) {
+        bagCopy = bagCopy.filter((item) => item.name !== name)
       } 
     });
     setBags([...bagCopy]);
@@ -45,7 +43,7 @@ export default function Home() {
         <AddMoneyBag visibility={popupVisibility} hide={hidePopup} addMoneyBag={addMoneyBag}/>
         {bags.map((item, index) => (
           <Fragment key={index}>
-          <Moneybag name={item.name} index={item.index} edit={editMoneyBag} del={deleteMoneyBag}/>
+          <Moneybag name={item.name} amount={item.amount} del={deleteMoneyBag}/>
           </Fragment>
         ))}
         <div className="flex items-center justify-center content-center h-[250px] w-[200px]">
