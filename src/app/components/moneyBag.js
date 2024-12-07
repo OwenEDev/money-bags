@@ -6,8 +6,8 @@ const Moneybag = ({name, amount, index, del} ) => {
     return (
         <div className="flex-col content-center h-[250px] w-[200px] rounded-3xl bg-[#4BC789]">
             <div className="my-[10px]">
-            <h1 className="text-center font-bold text-slate-50 text-6xl">{amount}</h1>
-            <h1 className="text-center font-bold text-slate-50 text-2xl">{name}</h1>
+            <h1 className="text-center font-bold text-slate-50 text-5xl break-words">{`£${amount}`}</h1>
+            <h1 className="text-center font-bold text-slate-50 text-2xl break-words">{name}</h1>
             </div>
             
             <div className="my-[10px] mx-10">
