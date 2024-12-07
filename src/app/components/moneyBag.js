@@ -1,6 +1,6 @@
 import {useState, useEffect} from "react";
 
-const Moneybag = ({name, amount, index, del} ) => {
+const Moneybag = ({name, amount, del, addPurchaseVisibility} ) => {
     const [text, setText] = useState('');
 
     return (
@@ -11,7 +11,7 @@ const Moneybag = ({name, amount, index, del} ) => {
             </div>
             
             <div className="my-[10px] mx-10">
-            <button className="border-2 hover:bg-[#82D9AD] text-white font-medium px-1 rounded w-[100%] my-[5px]">Add Purchase</button>
+            <button className="border-2 hover:bg-[#82D9AD] text-white font-medium px-1 rounded w-[100%] my-[5px]" onClick={() => {addPurchaseVisibility('absolute')}}>Add Purchase</button>
             <button className="border-2 hover:bg-[#82D9AD] text-white font-medium px-1 rounded w-[100%] my-[1px]">Summary</button>
             <button className="border-2 hover:bg-[#82D9AD] text-white font-medium px-1 rounded w-[100%] my-[1px]" onClick={() => {del(name)}}>Del</button>
             </div>
