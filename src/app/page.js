@@ -47,7 +47,7 @@ export default function Home() {
           </Fragment>
         ))}
         <div className="flex items-center justify-center content-center h-[250px] w-[200px]">
-          <CustomButton onClick={() => {setPopupVisibility('absolute')}} buttonText={"Add Moneybag"}/>
+          <CustomButton onClick={() => {setPopupVisibility('absolute')}} buttonText={"Add Money Bag"}/>
         </div>
       </main>
     </div>

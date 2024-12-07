@@ -26,7 +26,7 @@ const AddMoneyBag = ({visibility, hide, addMoneyBag}) => {
                 <div className="flex flex-col items-center">
                     <CustomInput placeholder={"Name your money bag"} onChange={setBagName} value={bagName}/>
                     <CustomInput placeholder={"Enter your budget"} onChange={setBagAmount} value={bagAmount}/>
-                    <CustomButton buttonText={"Add Money Bag"} onClick={() => {addMoneyBag(bagName, bagAmount); hide();}}/>
+                    <CustomButton buttonText={"Save and Add"} onClick={() => {addMoneyBag(bagName, bagAmount); hide();}}/>
                 </div>
 
             </div>
