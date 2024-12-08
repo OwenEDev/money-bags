@@ -9,7 +9,7 @@ import AddPurchase from "./components/addPurchase";
 export default function Home() {
   const [bags, setBags] = useState([])
   const [addMoneybagVisibility, setAddMoneybagVisibility] = useState('hidden')
-  const [addPurchaseVisbility, setAddPurchaseVisibility] = useState('hidden');
+  const [addPurchaseVisbility, setAddPurchaseVisibility] = useState({visibilityState: 'hidden', moneyBagName: ''});
   const [purchaseHistory, setPurchaseHistory] = useState([]);
 
   const addMoneyBag = (name, amount) => {
@@ -41,7 +41,7 @@ export default function Home() {
       </div>
       <main className="flex flex-row gap-8 row-start-2 items-center sm:items-start">
         <AddMoneyBag visibility={addMoneybagVisibility} hide={() => {setAddMoneybagVisibility('hidden')}} addMoneyBag={addMoneyBag}/>
-        <AddPurchase visibility={addPurchaseVisbility} hide={() => {setAddPurchaseVisibility('hidden')}} setPurchaseHistory={setPurchaseHistory} purchaseHistory={purchaseHistory}/>
+        <AddPurchase visibility={addPurchaseVisbility} setAddPurchaseVisibilty={setAddPurchaseVisibility} setPurchaseHistory={setPurchaseHistory} purchaseHistory={purchaseHistory}/>
         {bags.map((item, index) => (
           <Fragment key={index}>
           <Moneybag name={item.name} amount={item.amount} del={deleteMoneyBag} addPurchaseVisibility={setAddPurchaseVisibility}/>
