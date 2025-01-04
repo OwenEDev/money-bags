@@ -1,8 +1,9 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import CustomButton from "./customButton";
 import CustomInput from "./customInput";
+import { createNewMoneyBagDB } from "../db-manager";
 
-const AddMoneyBag = ({visibility, hide, addMoneyBag}) => {
+const AddMoneyBag = ({visibility, hide}) => {
     const [bagName, setBagName] = useState('');
     const [bagAmount, setBagAmount] = useState('');
 
@@ -26,7 +27,7 @@ const AddMoneyBag = ({visibility, hide, addMoneyBag}) => {
                 <div className="flex flex-col items-center">
                     <CustomInput placeholder={"Name your money bag"} onChange={setBagName} value={bagName}/>
                     <CustomInput placeholder={"Enter your budget"} onChange={setBagAmount} value={bagAmount}/>
-                    <CustomButton buttonText={"Save and Add"} onClick={() => {addMoneyBag(bagName, bagAmount); hide();}}/>
+                    <CustomButton buttonText={"Save and Add"} onClick={() => {createNewMoneyBagDB(bagName, bagAmount); hide();}}/>
                 </div>
 
             </div>

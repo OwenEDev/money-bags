@@ -1,20 +1,12 @@
 import { useState, useEffect } from "react";
 import CustomButton from "./customButton";
 import CustomInput from "./customInput";
+import { addPurchaseDB } from "../db-manager";
 
 const AddPurchase = ({visibility, setAddPurchaseVisibilty, setPurchaseHistory, purchaseHistory}) => {
 
     const [purchaseName, setPurchaseName] = useState('');
     const [purchaseAmount, setPurchaseAmount] = useState('');
-
-    const getPurchases = () => {
-        const entry = purchaseHistory.find(x => x.moneyBagName === visibility.moneyBagName)
-        console.log('entry', purchaseHistory.find(x => x.moneyBagName === visibility.moneyBagName))
-        // if (entry.purchases) return entry.purchases
-        return []
-    }
-
-    const purchases = getPurchases();
 
     return (
         <div tabIndex="-1" aria-hidden="true" className={`${visibility.visibilityState} overflow-y-auto overflow-x-hidden fixed justify-center items-center w-[50%] md:inset-0 h-[calc(100%-1rem)] max-h-full my-[150px] mx-[25%]`}>
@@ -36,7 +28,7 @@ const AddPurchase = ({visibility, setAddPurchaseVisibilty, setPurchaseHistory, p
                     <CustomInput placeholder={"What was this purchase?"} onChange={setPurchaseName}/>
                     <CustomInput placeholder={"How much was this purchase?"} onChange={setPurchaseAmount}/>
                     <CustomButton buttonText={"Save and Add"} onClick={() => { 
-                        setPurchaseHistory([...purchaseHistory, {moneyBagName: visibility.moneyBagName, purchases: [...purchases, {purchaseName: purchaseName, purchaseAmount}]}]);
+                        addPurchaseDB(visibility.moneyBagName, {name: purchaseName, amount: purchaseAmount});
                         setAddPurchaseVisibilty({visibilityState: 'hidden', moneyBagName: visibility.moneyBagName});}}/>
                 </div>
 

@@ -1,5 +1,5 @@
 import { DeleteItemCommand, DynamoDBClient } from "@aws-sdk/client-dynamodb";
-import { DeleteCommand, DynamoDBDocumentClient, GetCommand, PutCommand, UpdateCommand } from "@aws-sdk/lib-dynamodb";
+import { DeleteCommand, DynamoDBDocumentClient, GetCommand, PutCommand, UpdateCommand, ScanCommand } from "@aws-sdk/lib-dynamodb";
 
 const dbClient = new DynamoDBClient({
     credentials: {
@@ -11,7 +11,7 @@ const dbClient = new DynamoDBClient({
 
 const docClient = DynamoDBDocumentClient.from(dbClient);
 
-export const createNewMoneyBag = async (MoneyBagName, MoneyBagBudget) => {
+export const createNewMoneyBagDB = async (MoneyBagName, MoneyBagBudget) => {
     const command = new PutCommand({
         TableName: process.env.DYNAMO_TABLE_NAME,
   
@@ -28,7 +28,19 @@ export const createNewMoneyBag = async (MoneyBagName, MoneyBagBudget) => {
     }
 }
 
-export const getMoneybag = async (MoneyBagName) => {
+export const getAllMoneyBagsDB = async () => {
+    const command = new ScanCommand({
+        TableName: process.env.DYNAMO_TABLE_NAME
+    })
+    try {
+        const response = await docClient.send(command);
+        return response;
+    } catch (error) {
+        throw error
+    }
+}
+
+export const getMoneybagDB = async (MoneyBagName) => {
     const command = new GetCommand({
         TableName: process.env.DYNAMO_TABLE_NAME,
         Key: {
@@ -44,7 +56,7 @@ export const getMoneybag = async (MoneyBagName) => {
     }
 }
 
-export const addPurchase = async (MoneyBagName, Purchase) => {
+export const addPurchaseDB = async (MoneyBagName, Purchase) => {
     const command = new UpdateCommand({
         TableName: process.env.DYNAMO_TABLE_NAME,
         Key: {
@@ -68,7 +80,7 @@ export const addPurchase = async (MoneyBagName, Purchase) => {
     }
 }
 
-export const deletePurchase = async (MoneyBagName, purchaseName) => {
+export const deletePurchaseDB = async (MoneyBagName, purchaseName) => {
     const command = new UpdateCommand({
         TableName: process.env.DYNAMO_TABLE_NAME,
         Key: {
