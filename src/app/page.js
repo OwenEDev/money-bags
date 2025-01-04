@@ -33,7 +33,7 @@ export default function Home() {
       <main className="flex flex-row gap-8 row-start-2 items-center sm:items-start">
         <AddMoneyBag visibility={addMoneybagVisibility} hide={() => {setAddMoneybagVisibility('hidden')}} populatePage={populatePage}/>
         <AddPurchase visibility={addPurchaseVisbility} setAddPurchaseVisibilty={setAddPurchaseVisibility} populatePage={populatePage}/>
-        <Summary visibility={summaryVisibility} setSummaryVisibility={setSummaryVisibility}/>
+        <Summary visibility={summaryVisibility} setSummaryVisibility={setSummaryVisibility} populatePage={populatePage}/>
         {bags.map((item, index) => (
           <Fragment key={index}>
           <Moneybag name={item.MoneyBagID} budget={item.budget} purchases={item.purchases} addPurchaseVisibility={setAddPurchaseVisibility} setSummaryVisibility={setSummaryVisibility} populatePage={populatePage}/>
