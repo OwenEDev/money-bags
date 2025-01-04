@@ -9,7 +9,8 @@ const Moneybag = ({name, budget, purchases, del, addPurchaseVisibility, setSumma
             const amount = Number(purchases[key]);
             amountTotal = amountTotal + amount;
         })
-        return Number(budget) - amountTotal
+        const total =  Number(budget) - amountTotal
+        return Intl.NumberFormat().format(total);
     }
     return (
         <div className="flex-col content-center h-[250px] w-[200px] rounded-3xl bg-[#4BC789]">

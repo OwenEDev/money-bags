@@ -25,7 +25,7 @@ const Summary = ({visibility, setSummaryVisibility, populatePage}) => {
                 const purchases = moneyBag.purchases;
                 let data = [];
                 Object.keys(purchases).map((purchase) => {
-                    data = [...data, {name: purchase, amount: purchases[purchase]}]
+                    data = [...data, {name: purchase, amount: Intl.NumberFormat().format(Number(purchases[purchase]))}]
                 })
                 setData(data)
             }
