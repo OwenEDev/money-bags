@@ -3,13 +3,13 @@ import CustomButton from "./customButton";
 import CustomInput from "./customInput";
 import { addPurchaseDB } from "../db-manager";
 
-const AddPurchase = ({visibility, setAddPurchaseVisibilty, setPurchaseHistory, purchaseHistory}) => {
+const AddPurchase = ({visibility, setAddPurchaseVisibilty, populatePage}) => {
 
     const [purchaseName, setPurchaseName] = useState('');
     const [purchaseAmount, setPurchaseAmount] = useState('');
 
     return (
-        <div tabIndex="-1" aria-hidden="true" className={`${visibility.visibilityState} overflow-y-auto overflow-x-hidden fixed justify-center items-center w-[50%] md:inset-0 h-[calc(100%-1rem)] max-h-full my-[150px] mx-[25%]`}>
+<div tabIndex="-1" aria-hidden="true" className={`${visibility.visibilityState} overflow-y-auto overflow-x-hidden fixed justify-center items-center w-[50%] md:inset-0 h-[calc(100%-1rem)] max-h-full my-[150px] mx-[25%]`}>
     <div className="relative p-4 w-full max-h-full">
         <div className="relative bg-white rounded-lg">
             <div className="flex flex-col justify-between p-4 md:p-5 border-b rounded-t">
@@ -29,7 +29,9 @@ const AddPurchase = ({visibility, setAddPurchaseVisibilty, setPurchaseHistory, p
                     <CustomInput placeholder={"How much was this purchase?"} onChange={setPurchaseAmount}/>
                     <CustomButton buttonText={"Save and Add"} onClick={() => { 
                         addPurchaseDB(visibility.moneyBagName, {name: purchaseName, amount: purchaseAmount});
-                        setAddPurchaseVisibilty({visibilityState: 'hidden', moneyBagName: visibility.moneyBagName});}}/>
+                        setAddPurchaseVisibilty({visibilityState: 'hidden', moneyBagName: visibility.moneyBagName});
+                        populatePage();
+                        }}/>
                 </div>
 
             </div>

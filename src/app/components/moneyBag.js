@@ -1,7 +1,7 @@
 import {useState, useEffect} from "react";
 import { deleteMoneyBagDB } from "../db-manager";
 
-const Moneybag = ({name, budget, purchases, del, addPurchaseVisibility} ) => {
+const Moneybag = ({name, budget, purchases, del, addPurchaseVisibility, setSummaryVisibility, populatePage} ) => {
     const calculateTotal = () => {
         const purchaseKeys = Object.keys(purchases);
         let amountTotal = 0;
@@ -20,8 +20,8 @@ const Moneybag = ({name, budget, purchases, del, addPurchaseVisibility} ) => {
             
             <div className="my-[10px] mx-10">
             <button className="border-2 hover:bg-[#82D9AD] text-white font-medium px-1 rounded w-[100%] my-[2px]" onClick={() => {addPurchaseVisibility({visibilityState: 'absolute', moneyBagName: name})}}>Add Purchase</button>
-            <button className="border-2 hover:bg-[#82D9AD] text-white font-medium px-1 rounded w-[100%] my-[2px]">Summary</button>
-            <button className="border-2 hover:bg-[#82D9AD] text-white font-medium px-1 rounded w-[100%] my-[2px]" onClick={() => {del(name); deleteMoneyBagDB(name)}}>Del</button>
+            <button className="border-2 hover:bg-[#82D9AD] text-white font-medium px-1 rounded w-[100%] my-[2px]" onClick={() => {setSummaryVisibility({visibilityState: 'absolute', moneyBagName: name})}}>Summary</button>
+            <button className="border-2 hover:bg-[#82D9AD] text-white font-medium px-1 rounded w-[100%] my-[2px]" onClick={() => {deleteMoneyBagDB(name); populatePage();}}>Del</button>
             </div>
             
         </div>
